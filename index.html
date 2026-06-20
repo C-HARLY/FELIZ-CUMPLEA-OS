@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Diana! 🌹</title>
+    <style>
+        /* --- GENERAL STYLES --- */
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #FFF0F5; /* Pastel Pink Background */
+            font-family: 'Georgia', serif;
+            color: #1a1a1a;
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* --- ANIMATED INTRO SCREEN --- */
+        #intro-screen {
+            text-align: center;
+            padding: 20px;
+            z-index: 10;
+            transition: opacity 0.8s ease;
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+        }
+
+        #intro-screen h1 {
+            color: #8B0000; /* Deep Red / Burgundy */
+            font-size: 2.5rem;
+            margin-bottom: 5px;
+            animation: fadeInDown 1.5s ease;
+        }
+
+        #intro-screen p {
+            color: #333;
+            font-style: italic;
+            margin-bottom: 40px;
+            animation: fadeIn 2s ease;
+        }
+
+        /* Central Rose Container with Spawn Animation */
+        .rose-spawn-container {
+            display: inline-block;
+            margin: 20px auto;
+            animation: growRose 2.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+
+        .main-rose-btn {
+            background: none;
+            border: none;
+            font-size: 6.5rem;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            display: block;
+        }
+
+        .main-rose-btn:hover {
+            transform: scale(1.1) rotate(10deg);
+        }
+
+        /* --- FLOATING BALLOONS --- */
+        .balloon {
+            position: absolute;
+            font-size: 3.5rem;
+            animation: floatBalloon 4s ease-in-out infinite;
+            opacity: 0;
+            animation-fill-mode: forwards;
+        }
+
+        .balloon-left {
+            left: 15%;
+            top: 40%;
+            animation: floatBalloon 4s ease-in-out infinite, fadeIn 1.5s ease 1s forwards;
+        }
+
+        .balloon-right {
+            right: 15%;
+            top: 35%;
+            animation: floatBalloon 4.5s ease-in-out infinite 0.5s, fadeIn 1.5s ease 1.2s forwards;
+        }
+
+        /* --- INTRO ANIMATIONS --- */
+        @keyframes growRose {
+            0% { transform: scale(0) rotate(-45deg); opacity: 0; }
+            50% { transform: scale(1.2) rotate(10deg); opacity: 1; }
+            100% { transform: scale(1) rotate(0deg); }
+        }
+
+        @keyframes floatBalloon {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(3deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        @keyframes fadeInDown {
+            0% { opacity: 0; transform: translateY(-20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- LETTER SCREEN --- */
+        #letter-screen {
+            display: none;
+            opacity: 0;
+            max-width: 600px;
+            width: 90%;
+            margin: 40px auto;
+            padding: 30px;
+            background-color: #ffffff;
+            border: 3px solid #8B0000; /* Red Border */
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.15);
+            border-radius: 8px;
+            text-align: center;
+            z-index: 5;
+            transition: opacity 1s ease;
+            position: relative;
+        }
+
+        #letter-screen::before {
+            content: '';
+            position: absolute;
+            top: 5px; left: 5px; right: 5px; bottom: 5px;
+            border: 1px solid #000000; /* Inner black line */
+            pointer-events: none;
+        }
+
+        #letter-screen h2 {
+            color: #8B0000;
+            font-size: 2.2rem;
+            margin-top: 0;
+        }
+
+        .letter-content {
+            text-align: justify;
+            line-height: 1.6;
+            font-size: 1.1rem;
+            white-space: pre-line;
+            color: #111;
+        }
+
+        /* --- FALLING PETALS ANIMATION --- */
+        .petal {
+            position: fixed;
+            top: -20px;
+            pointer-events: none;
+            z-index: 1;
+            animation: fall linear forwards;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(105vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 🎈🌹 SCREEN 1: ANIMATED INTRO -->
+    <div id="intro-screen">
+        <!-- Floating Balloons -->
+        <div class="balloon balloon-left">🎈</div>
+        <div class="balloon balloon-right">💝</div>
+
+        <h1>Happy Birthday Diana 🖤</h1>
+        <p>Click on the rose to open your gift...</p>
+        
+        <!-- Rose button container -->
+        <div class="rose-spawn-container">
+            <button class="main-rose-btn" onclick="openLetter()">🌹</button>
+        </div>
+    </div>
+
+    <!-- 📜 SCREEN 2: THE LETTER -->
+    <div id="letter-screen">
+        <h2>To: Dear Diana ✨</h2>
+        <div class="letter-content">
+            They say the best connections are born in the shadows of distance. While the sun is still shining over here, I know that over in Slovakia you are already stepping into midnight...
+
+            In a world full of hollow interactions and cheap attention, finding a genuine soul on the other side of the ocean feels like a dark pact: silent, unbreakable, and entirely our own. Thank you for being a real mind I can always connect with, completely unfiltered.
+
+            May this new year of life bring you stories as intense and fascinating as the ones you love to read so much. After all, living in the most unromantic of worlds, finding someone real is our own sweetest oblivion. 🌹✨
+
+            Well, "Wifey," I wanted to write this letter like a dark romance author, but honestly, I just wanted to give something special to someone truly special on her day. I would have taken the time to send something incredibly romantic and elaborate to my wife on the other side of the world, but knowing you, you probably would’ve said: "I hate you, I hate you, I'm going to kill you, you want a beating, right? I don't need anything." Haha, just kidding, but you would've said something like that! Anyway, I'll stop teasing you.
+
+            First of all, Happy Birthday. I send you my best blessings, a big hug, and a few kisses—or maybe a lot of them. I wish you nothing but great health, even though you’re always giving me reasons to worry because you're like a Lego piece—every single day a different part of you hurts! But hey, you're 20 now, right? 
+
+            I guess life moves forward, it keeps going. A new chapter begins as another ends. You will meet new people; some will stay, and some will leave, and that is completely normal. You will probably make mistakes, choose poorly, and stumble along the way, but I need you to understand that it is perfectly normal, darling. After all, I mess up too. I make mistakes, I'm still an immature man in many ways, and I’ve lost people just as I’ve met new ones. It’s all part of the journey. 
+
+            Sometimes you might feel lost, a bit sad, or even completely alone. You might not know what to do, or you might deeply miss the past—and that is entirely okay. To suffer, to love, to hate, to yearn, to make mistakes... that is what makes us human. I just want you to be happy. 
+
+            I know you carry your own battles and sometimes you feel broken, but you are not a broken woman. You still have room to grow and mature, and you will absolutely shine, My Lady. Learn that people in life are fleeting—well, at least the ones who choose to leave—and try to learn something from every single soul and friendship that crosses your path. There is always a lesson. 
+
+            On another note, when you are this young, the future feels completely uncertain. Trust me, when I was 18, 19, 20, I had absolutely no purpose. The days just blurred past, I did nothing, and I was even obese. But do you want to know the trick? Just try. Go out into the world, dive into the deep ocean, and experiment. Eventually, you will forge your own path and doors will open for you. You just have to be smart—and you already are.
+
+            But seriously, thank you so much for the affection and the trust you’ve given me. That being said, I hope you'll allow me to keep being a part of your life and your world, and we'll see what the future holds. By the way, I am definitely coming to Europe, so I expect my date. I'll carry you around so nothing hurts you; just you wait. 
+
+            Have a beautiful day, take care of yourself, enjoy, take care of your family, trust in us because you are not alone. Keep growing, Wifey. 🌹🖤
+            
+            Te quiero atentamente Carlos.
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        function openLetter() {
+            // Fade out intro screen
+            document.getElementById('intro-screen').style.opacity = '0';
+            
+            setTimeout(() => {
+                document.getElementById('intro-screen').style.display = 'none';
+                
+                // Show letter with animation
+                const letter = document.getElementById('letter-screen');
+                letter.style.display = 'block';
+                setTimeout(() => letter.style.opacity = '1', 50);
+                
+                // Trigger interactive falling elements (Roses, Pinks, Hearts)
+                setInterval(createPetal, 250);
+            }, 800);
+        }
+
+        function createPetal() {
+            const petal = document.createElement('div');
+            petal.classList.add('petal');
+            
+            const types = ['🌹', '🌸', '❤️', '🖤'];
+            petal.textContent = types[Math.floor(Math.random() * types.length)];
+            
+            petal.style.left = Math.random() * 100 + 'vw';
+            petal.style.fontSize = Math.random() * (26 - 14) + 14 + 'px';
+            
+            const duration = Math.random() * (5 - 3) + 3;
+            petal.style.animationDuration = duration + 's';
+            
+            document.body.appendChild(petal);
+            
+            setTimeout(() => {
+                petal.remove();
+            }, duration * 1000);
+        }
+    </script>
+</body>
+</html>
